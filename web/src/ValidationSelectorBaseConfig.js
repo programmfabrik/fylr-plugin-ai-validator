@@ -1,4 +1,4 @@
-class ValidationSelectorBaseConfig extends BaseConfigPlugin {
+class AIValidatorValidationSelectorBaseConfig extends BaseConfigPlugin {
     getFieldDefFromParm(baseConfig, pname, def, parent_def) {
         // Configure validation for object types without tags here! :-)
 
@@ -38,5 +38,5 @@ class ValidationSelectorBaseConfig extends BaseConfigPlugin {
 }
 
 CUI.ready(() => {
-    BaseConfig.registerPlugin(new ValidationSelectorBaseConfig());
+    BaseConfig.registerPlugin(new AIValidatorValidationSelectorBaseConfig());
 });
