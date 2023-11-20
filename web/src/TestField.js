@@ -1,9 +1,9 @@
-class TestFieldConfig extends BaseConfigPlugin {
+class AIValidatorTestFieldConfig extends BaseConfigPlugin {
     queryApi(path, body) {
-        const baseUrl = ez5.pluginManager.getPlugin("aivalidator").getBareBaseURL().replace('/plugin/static', '/plugin/extension').slice(0, -1)
+        const baseUrl = ez5.pluginManager.getPlugin("ai-validator").getBareBaseURL().replace('/plugin/static', '/plugin/extension').slice(0, -1)
         return new CUI.XHR({
             method: "POST",
-            url: "https://fylr.datahive.one/api/v1/plugin/extension/aivalidator/test",
+            url: baseUrl+"/test",
             headers: {
                 'X-Fylr-Authorization': 'Bearer ' + ez5.session.token,
             },
@@ -130,5 +130,5 @@ class TestFieldConfig extends BaseConfigPlugin {
 
 
 CUI.ready(() => {
-    BaseConfig.registerPlugin(new TestFieldConfig())
+    BaseConfig.registerPlugin(new AIValidatorTestFieldConfig())
 })
