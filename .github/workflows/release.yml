@@ -30,7 +30,7 @@ jobs:
         shell: bash
 
       - name: Set zip file name
-        run: echo "ZIP_NAME=CitizenArchives.zip" >> $GITHUB_ENV
+        run: echo "ZIP_NAME=ai-validator.zip" >> $GITHUB_ENV
 
       - name: Build and Package
         shell: bash
