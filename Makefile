@@ -1,5 +1,5 @@
 ZIP_NAME ?= "ai-validator.zip"
-PLUGIN_NAME = citizen-archives
+PLUGIN_NAME = ai-validator
 
 
 help:
