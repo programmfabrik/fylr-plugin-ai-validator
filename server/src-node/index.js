@@ -267,7 +267,13 @@ process.stdin.on('end', async () => {
 		}
 
 		// extract config
-		const rawFylrConfig = fylrEnv?.config?.plugin?.aivalidator?.config
+		let rawFylrConfig = null
+		try {
+			rawFylrConfig = fylrEnv.config.plugin['ai-validator'].config
+		}
+		catch (err) {
+			// ignore...
+		}
 		if (rawFylrConfig) {
 			context.config = {
 				// `fields` for which objects to check and which tags to check and set. Is an array with each element
