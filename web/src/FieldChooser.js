@@ -4,7 +4,7 @@
 
 
 
-class FieldChooserConfig extends BaseConfigPlugin {
+class AIValidatorFieldChooserConfig extends BaseConfigPlugin {
     getFieldDefFromParm(baseConfig, pname, def, parent_def) {
         if (def.plugin_type !== "field-chooser") {
             return;
@@ -105,5 +105,5 @@ class FieldChooserConfig extends BaseConfigPlugin {
 
 
 CUI.ready(() => {
-    BaseConfig.registerPlugin(new FieldChooserConfig());
+    BaseConfig.registerPlugin(new AIValidatorFieldChooserConfig());
 });
