@@ -19,7 +19,8 @@ const AIValidatorAPI = {
                 body: JSON.stringify(body)
             })
             .then((response) => {
-                if ((response.headers.get('content-type') ?? '').startsWith('application/json')) {
+                const contentType = response.headers.get('content-type')
+                if (contentType && contentType.startsWith('application/json')) {
                     return response.json()
                 } else {
                     return response.text()
