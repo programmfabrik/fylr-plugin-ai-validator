@@ -1,0 +1,335 @@
+plugin:
+  name: citizenarchives
+  version: 0.1
+  l10n: translations.csv
+  displayname:
+    de-DE: AI Validator
+    en-US: AI Validator
+  info:
+    de-DE: "Automatische Kennzeichnung von potentiell problematischen Texten."
+    en-US: "Automatic flagging of potentially problematic texts."
+  webfrontend:
+    url: web.js
+
+base_url_prefix: "web"
+
+extensions:
+  get-preset-blocklist:
+    exec:
+      service: "node"
+      commands:
+        - prog: "node"
+          stdin:
+            type: "body"
+          stdout:
+            type: "body"
+          args:
+            - type: "value"
+              value: "%_exec.pluginDir%/server/api.js"
+            - type: "value"
+              value: "%_exec.pluginDir%"
+            - type: "value"
+              value: "%info.json%"
+            - type: "value"
+              value: "get-preset-blocklist"
+  evaluate:
+    exec:
+      service: "node"
+      commands:
+        - prog: "node"
+          stdin:
+            type: "body"
+          stdout:
+            type: "body"
+          args:
+            - type: "value"
+              value: "%_exec.pluginDir%/server/api.js"
+            - type: "value"
+              value: "%_exec.pluginDir%"
+            - type: "value"
+              value: "%info.json%"
+            - type: "value"
+              value: "evaluate"
+  config:
+    exec:
+      service: "node"
+      commands:
+        - prog: "node"
+          stdin:
+            type: "body"
+          stdout:
+            type: "body"
+          args:
+            - type: "value"
+              value: "%_exec.pluginDir%/server/api.js"
+            - type: "value"
+              value: "%_exec.pluginDir%"
+            - type: "value"
+              value: "%info.json%"
+            - type: "value"
+              value: "config"
+  env:
+    exec:
+      service: "node"
+      commands:
+        - prog: "node"
+          stdin:
+            type: "body"
+          stdout:
+            type: "body"
+          args:
+            - type: "value"
+              value: "%_exec.pluginDir%/server/api.js"
+            - type: "value"
+              value: "%_exec.pluginDir%"
+            - type: "value"
+              value: "%info.json%"
+            - type: "value"
+              value: "env"
+  test:
+    exec:
+      service: "node"
+      commands:
+        - prog: "node"
+          stdin:
+            type: "body"
+          stdout:
+            type: "body"
+          args:
+            - type: "value"
+              value: "%_exec.pluginDir%/server/api.js"
+            - type: "value"
+              value: "%_exec.pluginDir%"
+            - type: "value"
+              value: "%info.json%"
+            - type: "value"
+              value: "test"
+
+  stem:
+    exec:
+      service: "python3"
+      commands:
+        - prog: "python"
+          stdin:
+            type: "body"
+          stdout:
+            type: "body"
+          args:
+            - type: "value"
+              value: "%_exec.pluginDir%/server/stem.py"
+
+callbacks:
+  transition_db_pre_save:
+    sendtovalidation:
+      exec:
+        service: "node"
+        commands:
+          - prog: "node"
+            stdin:
+              type: body
+            stdout:
+              type: body
+            args:
+              - type: "value"
+                value: "%_exec.pluginDir%/server/api.js"
+              - type: "value"
+                value: "%_exec.pluginDir%"
+              - type: "value"
+                value: "%info.json%"
+              - type: "value"
+                value: "saving"
+
+
+  db_pre_save:
+    steps:
+     - name: "test for 'validierungstest'"
+       callback: sendtovalidation
+    callbacks:
+      sendtovalidation:
+        exec:
+          service: "node"
+          commands:
+            - prog: "node"
+              stdin:
+                type: "body"
+              stdout:
+                type: "body"
+              args:
+                - type: "value"
+                  value: "%_exec.pluginDir%/server/api.js"
+                - type: "value"
+                  value: "%_exec.pluginDir%"
+                - type: "value"
+                  value: "%info.json%"
+                - type: "value"
+                  value: "saving"
+
+#  transition_db_pre_save:
+#    sendtovalidation:
+#      exec:
+#        service: "node"
+#        commands:
+#          - prog: "node"
+#            stdin:
+#              type: body
+#            stdout:
+#              type: body
+#            args:
+#              - type: "value"
+#                value: "%_exec.pluginDir%/server/validation.js"
+
+#  db_pre_save:
+#    steps:
+#      - name: "test for 'validierungstest'"
+#        callback: sendtovalidation
+#    callbacks:
+#      sendtovalidation:
+#        exec:
+#          service: "node"
+#          commands:
+#            - prog: "node"
+#              stdin:
+#                type: body
+#              stdout:
+#                type: body
+#              args:
+#                - type: "value"
+#                  value: "%_exec.pluginDir%/server/validation.js"
+#                - type: "value"
+#                  value: "%info.json%"
+
+base_config:
+  - name: citizenarchives-base
+    group: citizenarchives-base
+    parameters:
+      # custom element for which fields of which objects in the data model it applies to
+      fields_chooser:
+          type: text
+          store_as_json: true
+          plugin_type: field-chooser
+          position: 1
+
+      # custom element for which tag should be set for flagged entries
+      # tag_chooser:
+      #     type: text
+      #     plugin_type: tag-chooser
+      #     position: -1
+
+      # tag_choose1:
+      #     type: text
+      #     plugin_type: tag-select
+      #     store_as_json: true
+      #     position: -1
+      # tag_choose2:
+      #     type: text
+      #     plugin_type: tag-select
+      #     store_as_json: true
+      #     position: 0
+
+
+  - name: citizenarchives-criterias
+    group: citizenarchives-criterias
+    parameters:
+      chatgpt_enabled:
+        type: bool
+        default: true
+        position: 0
+      chatgpt_threshold:
+        type: int
+        min: 0
+        max: 100
+        default: 50
+        position: 1
+
+      sentiment_enabled:
+        type: bool
+        default: true
+        position: 2
+      sentiment_threshold:
+        type: int
+        min: 0
+        max: 100
+        default: 50
+        position: 3
+
+      markings_enabled:
+        type: bool
+        default: true
+        position: 4
+      markings_threshold:
+        type: int
+        min: 0
+        max: 100
+        default: 50
+        position: 5
+
+      spelling_enabled:
+        type: bool
+        default: true
+        position: 6
+      spelling_threshold:
+        type: int
+        min: 0
+        max: 100
+        default: 50
+        position: 7
+
+      rate_limiting_enabled:
+        type: bool
+        default: true
+        position: 9
+
+      nongerman_flag_enabled:
+        type: bool
+        default: true
+        position: 10
+
+      repeated_offender_enabled:
+        type: int
+        min: 1
+        max: 100
+        default: 1
+        position: 11
+
+
+  - name: citizenarchives-misc
+    group: citizenarchives-misc
+    parameters:
+      preset_blocklist:
+        type: text
+        plugin_type: blocklist-preset
+        position: 1
+
+      own_blocklist:
+        type: text
+        plugin_type: blocklist-define  # TODO: Maybe better a csv file upload
+        position: 2
+
+      openai_apikey:
+        type: text
+        default: 
+        position: 3
+
+      detectlanguage_apikey:
+        type: text
+        default: 
+        position: 4
+
+
+  - name: citizenarchives-testing
+    group: citizenarchives-testing
+    parameters:
+      testfield:
+        type: text
+        plugin_type: testfield
+        position: 1
+
+
+
+
+      #validation_selector:
+      # type: text
+      # plugin_type: validation-selector
+      # store_as_json: true
+      # position: -1
+

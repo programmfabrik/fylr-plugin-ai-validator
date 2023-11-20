@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "fast-json": "^3.0.0",
+    "secure-json-parse": "^2.7.0",
+    "simdjson": "^0.9.2"
+  }
+}

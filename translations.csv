@@ -1,0 +1,150 @@
+key,de-DE,en-US
+server.config.name.system.citizenarchives-base,Basis-Einstellungen,Base settings
+
+server.config.parameter.system.citizenarchives-base.fields_chooser.label,Felder zu prüfen,Fields to check
+
+server.config.parameter.system.citizenarchives-base.tag_chooser.label,Verdächtige Einträge mit folgendem Tag markieren,Tag for flagged entries
+server.config.parameter.system.citizenarchives-base.tag_chooser.placeholder,Tag wählen,Choose tag
+
+server.config.parameter.system.citizenarchives-base.tag_choose1.label,Trigger-Tag wählen,Choose trigger tag
+server.config.parameter.system.citizenarchives-base.tag_choose1.placeholder,Tag wählen,Choose tag
+
+server.config.parameter.system.citizenarchives-base.tag_choose2.label,Markierungs-Tag wählen,Choose marker tag
+server.config.parameter.system.citizenarchives-base.tag_choose2.placeholder,Tag wählen,Choose tag
+
+server.config.parameter.system.citizenarchives-base.field-chooser.modelfield.label,Objekt & Feld,Object & field
+server.config.parameter.system.citizenarchives-base.field-chooser.modelfield.placeholder,Feld wählen,Choose field
+server.config.parameter.system.citizenarchives-base.field-chooser.model.label,Objekt,Object
+server.config.parameter.system.citizenarchives-base.field-chooser.field.label,Feld,Field
+
+
+
+
+server.config.name.system.citizenarchives-criterias,Kriterien,Criterias
+
+server.config.parameter.system.citizenarchives-criterias.chatgpt_threshold.label,ChatGPT Schwellwert (0 - 100),ChatGPT threshold (0 - 100)
+server.config.parameter.system.citizenarchives-criterias.chatgpt_threshold.label|hint,"Ab welcher Problematik-Beurteilung von ChatGPT ein Eintrag getaggt wird mit 0=unproblematisch, 100=super problematisch. Empfohlen: 50. Dies verwendet ChatGPT, um den Text zu bewerten und ihm eine Beurteilung zu geben. Es kann die Bedeutung und die Absicht auch dann genau beurteilen, wenn es Rechtschreibfehler gibt oder Teile in einer anderen Sprache verfasst sind.","At what level of problem assessment by ChatGPT is an entry tagged with 0=unproblematic, 100=super problematic. Recommended: 50. This uses ChatGPT to judge the text and give it a rating. It can accurately assess the meaning and its intention even when there spelling errors or parts are in a different language."
+server.config.parameter.system.citizenarchives-criterias.chatgpt_enabled.label,ChatGPT nutzen,Use ChatGPT
+server.config.parameter.system.citizenarchives-criterias.chatgpt_enabled.checkbox,nutzen,use it
+
+server.config.parameter.system.citizenarchives-criterias.sentiment_threshold.label,Sentimentanalyse Schwellwert (0 - 100),Sentiment analysis threshold (0 - 100)
+server.config.parameter.system.citizenarchives-criterias.sentiment_threshold.label|hint,"Dies überprüft, wie positiv oder negativ der Text insgesamt ist. Ab welcher Problematik-Beurteilung der Sentimentanalyse ein Eintrag getaggt wird mit 0=unproblematisch, 100=super problematisch. Empfohlen: 50. Dies reduziert jedes Wort auf seinen Stamm (gesagt => sagen) und vergleicht es mit Listen positiver und negativer Wörter, um an den endgültigen Wert zu gelangen.","This checks how positive or negative the text is overall.At what level of sentiment analysis assessment is an entry tagged, with 0=unproblematic, 100=super problematic. Recommended: 50. This reduces each word to its stem (said => say) and compares it against lists of positive and negative words to arrive at its final score."
+server.config.parameter.system.citizenarchives-criterias.sentiment_enabled.label,Sentimentanalyse ausführen,Use sentiment analysis
+server.config.parameter.system.citizenarchives-criterias.sentiment_enabled.checkbox,ausführen,use it
+
+server.config.parameter.system.citizenarchives-criterias.spelling_threshold.label,Rechtschreibung Schwellwert (0 - 100),Spelling threshold (0 - 100)
+server.config.parameter.system.citizenarchives-criterias.spelling_threshold.label|hint,"Die Rechtschreibung wird eingeschätzt mit 0=alles korrekt und 100=unverhältnismäßig viele unerkannte Wörter. Empfehlung: 50. Dabei wird die Hunspell-Rechtschreibprüfung angewandt, die u.A. auch in OpenOffice verwendet wird, und außerdem mit 14.000 Städtenamen angereichert.","Spelling is assessed with 0=everything correct and 100=an excessively high number of unrecognized words. Recommendation: 50. The Hunspell spell checker is applied which is also used in OpenOffice, and is additionally enriched with 14,000 city names."
+server.config.parameter.system.citizenarchives-criterias.spelling_enabled.label,Rechtschreibung überprüfen,Use spelling check
+server.config.parameter.system.citizenarchives-criterias.spelling_enabled.checkbox,überprüfen,check spelling
+
+server.config.parameter.system.citizenarchives-criterias.markings_threshold.label,Übermäßige Markierungen Schwellwert (0 - 100),Excessive markings Schwellwert (0 - 100)
+server.config.parameter.system.citizenarchives-criterias.markings_threshold.label|hint,"Hier wird geprüft, wie viele Ausrufezeichen, Fragezeichen, Emojis und GANZGROẞSCHREIBUNG im Text sind. 0=keine Auffälligkeit und 100=sehr auffällig. Empfohlen: 50. Die Häufigkeit wird mit Normwerten von Internet-Nutzerkommentaren verglichen.","Here, it is checked how many exclamation marks, question marks, emojis, and ALL CAPS are in the text. 0=no abnormality and 100=very noticeable. Recommended: 50. The frequency gets compared to norm values of web user comments."
+server.config.parameter.system.citizenarchives-criterias.markings_enabled.label,Übermäßige Markierungen überprüfen,Check excessive markings
+server.config.parameter.system.citizenarchives-criterias.markings_enabled.checkbox,überprüfen,check it
+
+server.config.parameter.system.citizenarchives-criterias.repeated_offender_enabled.label,Neue Einträge von Wiederholungstätern taggen bei schon X getaggten Einträgen (0 - 100),Flag new posts of repeat offenders after already having X flagged entries (0 - 10)
+server.config.parameter.system.citizenarchives-criterias.repeated_offender_enabled.label|hint,"Hat eine Person schon mehrere Einträge abgegeben die dann getaggt wurden, können Folgeeinträge dieser Person automatisch getaggt werden. Hier wird die Anzahl festgelegt, ab dieser alle Folgeeinträge getaggt werden, egal ob sie unproblematisch sind oder nicht.","If a person has already submitted multiple entries that have been tagged, subsequent entries from that person can be automatically tagged. The number is set here, from which all subsequent entries will be tagged, whether they are unproblematic or not."
+
+server.config.parameter.system.citizenarchives-criterias.rate_limiting_enabled.label,Ratenlimitierung,Rate limiting
+server.config.parameter.system.citizenarchives-criterias.rate_limiting_enabled.label|hint,"Anschalten um Bots zu verhindern, indem Einträge getaggt werden, wenn zu viele in zu kurzer Zeit abgegeben werden. Maximum ist 1000 pro Tag, 100 pro Stunde und 8 pro Minute.","Turn on to prevent bots by tagging entries if too many are submitted in a short period. Maximum is 1000 per day, 100 per hour and 8 per minute."
+server.config.parameter.system.citizenarchives-criterias.rate_limiting_enabled.checkbox,an,on
+
+server.config.parameter.system.citizenarchives-criterias.nongerman_flag_enabled.label,Nicht in Deutscher Sprache,Not in German language
+server.config.parameter.system.citizenarchives-criterias.nongerman_flag_enabled.label|hint,"Ob Einträge automatisch getaggt werden, wenn erkannt wird, dass sie nicht in deutscher Sprache erfasst wurden.","Whether entries are automatically tagged when it is detected that they were not written in the German language."
+server.config.parameter.system.citizenarchives-criterias.nongerman_flag_enabled.checkbox,Zur Überprüfung markieren/Tag setzen,flag
+
+
+
+
+
+server.config.name.system.citizenarchives-misc,Sonstige Einstellungen,Misc settings
+
+server.config.parameter.system.citizenarchives-misc.preset_blocklist.label,Vorgegebene Blockliste,Preset blocklist
+server.config.parameter.system.citizenarchives-misc.preset_blocklist.label|hint,"Kommt eines dieser Wörter im Texteintrag vor, wird er getaggt.","If any of these words are present in the text entry, it will be tagged."
+server.config.parameter.system.citizenarchives-testing.testfield.preset_blocklist.descr,"Es wird eine vorgefertigte Blockliste mitgeliefert, deren Wortinhalte zum Markieren führt.","This is a pre-made blocklist whose word contents lead to marking."
+server.config.parameter.system.citizenarchives-testing.testfield.preset_blocklist.show,"Anzeigen","Show"
+server.config.parameter.system.citizenarchives-testing.testfield.preset_blocklist.download,"Download","Download"
+server.config.parameter.system.citizenarchives-misc.own_blocklist.label,Eigene Blockliste (1 Eintrag pro Zeile),Custom blocklist (1 entry per line)
+server.config.parameter.system.citizenarchives-misc.own_blocklist.label|hint,"Kommt eines dieser Wörter im Texteintrag vor, wird er getaggt.","If any of these words are present in the text entry, it will be tagged."
+
+server.config.parameter.system.citizenarchives-misc.openai_apikey.label,API Key für OpenAI,OpenAI API Key
+server.config.parameter.system.citizenarchives-misc.openai_apikey.label|hint,"Zum Nutzen der Anfragen mit ChatGPT. Ohne diesen Key kann ChatGPT nicht genutzt werden.","To use the requests with ChatGPT. Without the key ChatGPT can not be used."
+
+server.config.parameter.system.citizenarchives-misc.detectlanguage_apikey.label,API Key für detectlanguage.com,DetectLanguage.com API Key
+server.config.parameter.system.citizenarchives-misc.detectlanguage_apikey.label|hint,"Zum Verwenden der API von detectlanguage.com (frei bis 1000 Anfragen pro Tag). Ohne diesen Key verwendet die Spracherkennung stattdessen eine simplere Methode.","To use an API for language detection (free for up to 1000 requests per day). Without this key the language detection uses a simpler method instead."
+
+
+
+
+server.config.name.system.citizenarchives-testing,Evaluierung testen,Test the evaluation
+
+server.config.parameter.system.citizenarchives-testing.testfield.label,Testfeld,Test area
+server.config.parameter.system.citizenarchives-testing.testfield.button.label,Testen,test
+server.config.parameter.system.citizenarchives-testing.testfield.caption,"Testen Sie hier Texte und sehen Sie, wie diese beurteilt werden.","Test your texts here to check how they are judged."
+server.config.parameter.system.citizenarchives-testing.testfield.loading,"Lade...","Loading..."
+
+
+
+server.config.parameter.system.citizenarchives-testing.testfield.markings,"Übermäßige Markierungen","Excessive markings"
+server.config.parameter.system.citizenarchives-testing.testfield.spelling,"Rechtschreibung","Spelling (German)"
+server.config.parameter.system.citizenarchives-testing.testfield.sentiment,"Sentiment","Sentiment"
+server.config.parameter.system.citizenarchives-testing.testfield.german,"Deutsche Sprache","German language"
+server.config.parameter.system.citizenarchives-testing.testfield.chatgpt,"ChatGPT","ChatGPT"
+server.config.parameter.system.citizenarchives-testing.testfield.predefinedBlocklist,"Vorgefertigte Blockliste","Predefined blocklist"
+server.config.parameter.system.citizenarchives-testing.testfield.customBlocklist,"Eigene Blockliste","Custom blocklist"
+server.config.parameter.system.citizenarchives-testing.testfield.error,"Fehler","Error"
+server.config.parameter.system.citizenarchives-testing.testfield.result,"Fazit","Result"
+server.config.parameter.system.citizenarchives-testing.testfield.result-bad,"Sollte überprüft werden.","Should be checked."
+server.config.parameter.system.citizenarchives-testing.testfield.result-okay,"Keine Auffälligkeiten über Schwellwerten gefunden.","No abnormally above norm values found."
+server.config.parameter.system.citizenarchives-testing.testfield.problematic,"problematisch bei Schwellwert von","problematic at a threshold of"
+server.config.parameter.system.citizenarchives-testing.testfield.okay,"okay","okay"
+server.config.parameter.system.citizenarchives-testing.testfield.not-okay,"'nicht okay'","not okay"
+
+server.config.parameter.system.citizenarchives-testing.testfield.markings.uppercase,"Großbuchstaben","Uppercase characters"
+server.config.parameter.system.citizenarchives-testing.testfield.markings.lowercase,"Kleinbuchstaben","Lowercase chararacters"
+server.config.parameter.system.citizenarchives-testing.testfield.markings.ratio,"Verhältnis von Großbuchstaben","Ratio of uppercase characters"
+server.config.parameter.system.citizenarchives-testing.testfield.markings.totalCharacterCount,"Anzahl Buchstaben","Character count"
+server.config.parameter.system.citizenarchives-testing.testfield.markings.normalCharacterCount,"Normale Buchstaben","Normal characters"
+server.config.parameter.system.citizenarchives-testing.testfield.markings.normalRatio,"Verhältnis normaler Buchstaben","Ratio of normal characters"
+server.config.parameter.system.citizenarchives-testing.testfield.markings.emojiCount,"Anzahl Emojis","Emoji count"
+server.config.parameter.system.citizenarchives-testing.testfield.markings.emojiRatio,"Verhältnis von Emojis","Emoji ratio"
+server.config.parameter.system.citizenarchives-testing.testfield.markings.excessiveMarks,"Übermäßige Markierungen","Excessive marks"
+
+server.config.parameter.system.citizenarchives-testing.testfield.spelling.totalWords,"Anzahl Worte","Word count"
+server.config.parameter.system.citizenarchives-testing.testfield.spelling.unrecognizedWords,"Nicht erkannte Worte","Non-recognized words"
+
+server.config.parameter.system.citizenarchives-testing.testfield.sentiment.stems,"Alle Wortstämme","All word stems"
+server.config.parameter.system.citizenarchives-testing.testfield.sentiment.positives,"Positive Worte","Positive words"
+server.config.parameter.system.citizenarchives-testing.testfield.sentiment.negatives,"Negative Worte","Negative words"
+server.config.parameter.system.citizenarchives-testing.testfield.sentiment.terribles,"Schlimme Worte","Terrible words"
+
+server.config.parameter.system.citizenarchives-testing.testfield.german.smart,"Mittels API","Via API"
+
+server.config.parameter.system.citizenarchives-testing.testfield.chatgpt.reasoning,"Begründung","Reasoning"
+
+server.config.parameter.system.citizenarchives-testing.testfield.predefinedBlocklist.matches,"Treffer","Matches"
+server.config.parameter.system.citizenarchives-testing.testfield.customBlocklist.matches,"Treffer","Matches"
+
+
+_server.config.name.system.citizenarchives-secrets,API Schlüssel,API Keys
+
+
+server.config.parameter.system.citizenarchives-testing.testfield.yes,Ja,Yes
+server.config.parameter.system.citizenarchives-testing.testfield.no,Nein,No
+
+
+
+
+citizenarchives.user.plugin.tab-text,AI Validator,AI Validator
+
+citizenarchives.user.plugin.form.id.label,Anzahl schon getaggter Beiträge,Amount of already tagged posts
+citizenarchives.user.plugin.form.id.hint.md,"Auf 0 zurücksetzen, um dem Nutzer wieder eine weiße Weste zu geben. Auf 1000 setzen, um alle zukünftigen Beiträge des Nutzers automatisch zu taggen.","Reset to 0 to give the user a clean slate. Set to 1000 to automatically tag all future posts by the user."
+
+citizenarchives.user.plugin.form.nday.label,Beiträge an diesem Tag,Posts on this day
+citizenarchives.user.plugin.form.nhour.label,Beiträge in dieser Stunde,Posts in this hour
+citizenarchives.user.plugin.form.nminute.label,Beiträge in dieser Minute,Posts in this minute
+citizenarchives.user.plugin.form.sday.label,Tag,Day
+citizenarchives.user.plugin.form.shour.label,Stunde,Hour
+citizenarchives.user.plugin.form.sminute.label,Minute,Minute
+
+citizenarchives.user.plugin.form.hint.dontchange,Bitte nicht ändern.,Please don't edit.
