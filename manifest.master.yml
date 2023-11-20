@@ -1,6 +1,6 @@
 plugin:
   name: ai-validator
-  version: 0.1
+  version: 1.0
   l10n: translations.csv
   displayname:
     de-DE: AI Validator
@@ -164,40 +164,6 @@ callbacks:
                 - type: "value"
                   value: "saving"
 
-#  transition_db_pre_save:
-#    sendtovalidation:
-#      exec:
-#        service: "node"
-#        commands:
-#          - prog: "node"
-#            stdin:
-#              type: body
-#            stdout:
-#              type: body
-#            args:
-#              - type: "value"
-#                value: "%_exec.pluginDir%/server/validation.js"
-
-#  db_pre_save:
-#    steps:
-#      - name: "test for 'validierungstest'"
-#        callback: sendtovalidation
-#    callbacks:
-#      sendtovalidation:
-#        exec:
-#          service: "node"
-#          commands:
-#            - prog: "node"
-#              stdin:
-#                type: body
-#              stdout:
-#                type: body
-#              args:
-#                - type: "value"
-#                  value: "%_exec.pluginDir%/server/validation.js"
-#                - type: "value"
-#                  value: "%info.json%"
-
 base_config:
   - name: citizenarchives-base
     group: citizenarchives-base
@@ -208,24 +174,6 @@ base_config:
           store_as_json: true
           plugin_type: field-chooser
           position: 1
-
-      # custom element for which tag should be set for flagged entries
-      # tag_chooser:
-      #     type: text
-      #     plugin_type: tag-chooser
-      #     position: -1
-
-      # tag_choose1:
-      #     type: text
-      #     plugin_type: tag-select
-      #     store_as_json: true
-      #     position: -1
-      # tag_choose2:
-      #     type: text
-      #     plugin_type: tag-select
-      #     store_as_json: true
-      #     position: 0
-
 
   - name: citizenarchives-criterias
     group: citizenarchives-criterias
@@ -302,7 +250,7 @@ base_config:
 
       own_blocklist:
         type: text
-        plugin_type: blocklist-define  # TODO: Maybe better a csv file upload
+        plugin_type: blocklist-define
         position: 2
 
       openai_apikey:
@@ -323,13 +271,3 @@ base_config:
         type: text
         plugin_type: testfield
         position: 1
-
-
-
-
-      #validation_selector:
-      # type: text
-      # plugin_type: validation-selector
-      # store_as_json: true
-      # position: -1
-
