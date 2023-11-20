@@ -9,7 +9,7 @@ const AIValidatorAPI = {
 
     query: (method, path, body) => {
         return new Promise((resolve, reject) => {
-            const baseUrl = ez5.pluginManager.getPlugin("aivalidator").getBareBaseURL().replace('/plugin/static', '/plugin/extension').slice(0, -1)
+            const baseUrl = ez5.pluginManager.getPlugin("ai-validator").getBareBaseURL().replace('/plugin/static', '/plugin/extension').slice(0, -1)
             fetch(baseUrl + path, {
                 method,
                 headers: {
