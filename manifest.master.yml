@@ -1,5 +1,5 @@
 plugin:
-  name: citizenarchives
+  name: ai-validator
   version: 0.1
   l10n: translations.csv
   displayname:
