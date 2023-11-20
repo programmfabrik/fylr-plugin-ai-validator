@@ -1,4 +1,4 @@
-ZIP_NAME ?= "CitizenArchives.zip"
+ZIP_NAME ?= "ai-validator.zip"
 PLUGIN_NAME = citizen-archives
 
 
