@@ -165,8 +165,8 @@ callbacks:
                   value: "saving"
 
 base_config:
-  - name: citizenarchives-base
-    group: citizenarchives-base
+  - name: aivalidator-base
+    group: aivalidator-base
     parameters:
       # custom element for which fields of which objects in the data model it applies to
       fields_chooser:
@@ -175,8 +175,8 @@ base_config:
           plugin_type: field-chooser
           position: 1
 
-  - name: citizenarchives-criterias
-    group: citizenarchives-criterias
+  - name: aivalidator-criterias
+    group: aivalidator-criterias
     parameters:
       chatgpt_enabled:
         type: bool
@@ -240,8 +240,8 @@ base_config:
         position: 11
 
 
-  - name: citizenarchives-misc
-    group: citizenarchives-misc
+  - name: aivalidator-misc
+    group: aivalidator-misc
     parameters:
       preset_blocklist:
         type: text
@@ -264,8 +264,8 @@ base_config:
         position: 4
 
 
-  - name: citizenarchives-testing
-    group: citizenarchives-testing
+  - name: aivalidator-testing
+    group: aivalidator-testing
     parameters:
       testfield:
         type: text
