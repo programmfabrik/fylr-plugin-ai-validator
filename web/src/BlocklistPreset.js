@@ -1,4 +1,4 @@
-class BlocklistPresetConfig extends BaseConfigPlugin {
+class AIValidatorBlocklistPresetConfig extends BaseConfigPlugin {
     getFieldDefFromParm(baseConfig, pname, def, parent_def) {
         if (def.plugin_type !== "blocklist-preset") {
             return
@@ -65,5 +65,5 @@ class BlocklistPresetConfig extends BaseConfigPlugin {
 
 
 CUI.ready(() => {
-    BaseConfig.registerPlugin(new BlocklistPresetConfig())
+    BaseConfig.registerPlugin(new AIValidatorBlocklistPresetConfig())
 })
