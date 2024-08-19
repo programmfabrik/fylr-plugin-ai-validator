@@ -17,6 +17,10 @@ The ZIP can be downloaded and installed using the plugin manager, or used direct
 
 Github has an overview page to get a list of [all release](https://github.com/programmfabrik/fylr-plugin-ai-validator/releases/).
 
+In addition, necessary packages must be installed manually. See also (https://github.com/programmfabrik/fylr-plugin-ai-validator/blob/main/Makefile#L42)
+
+	pip install HanTa numpy nltk
+	npm install --save detectlanguage dotenv hunspell-spellchecker node-fetch underscore
 
 ## documentation
 
