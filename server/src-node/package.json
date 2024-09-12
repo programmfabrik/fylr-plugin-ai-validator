@@ -16,7 +16,8 @@
     "detectlanguage": "^2.1.0",
     "dotenv": "^16.3.1",
     "hunspell-spellchecker": "^1.0.2",
-    "underscore": "^1.13.6"
+    "underscore": "^1.13.6",
+    "node-fetch": "^3.3.2"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.4",
