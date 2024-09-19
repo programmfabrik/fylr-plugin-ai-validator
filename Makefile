@@ -23,19 +23,17 @@ build-web:
 build-server:
 	mkdir -p build/$(PLUGIN_NAME)/server
 
-	mkdir server/src-python/hanta_numpy_nltk
 	pip download HanTa numpy nltk -d server/src-python/hanta_numpy_nltk
-	# download "regex" as .tar.gz. Specific version, see https://github.com/psf/black/issues/1207
-	wget https://files.pythonhosted.org/packages/source/r/regex/regex-2019.11.1.tar.gz -P server/src-python/hanta_numpy_nltk
-	mkdir server/src-python/hanta_numpy_nltk/unpacked
 
-	# unpack regex.gz and the .whl-files
+	# unpack the .whl-files
 	mkdir -p $(UNPACKED_DIR)
 	for whl_file in $(LIBRARY_DIR)/*.whl; do \
 		echo "Unpacking $$whl_file to $(UNPACKED_DIR)"; \
 		unzip -q $$whl_file -d $(UNPACKED_DIR); \
 	done
-	tar -xzf server/src-python/hanta_numpy_nltk/regex-2019.11.1.tar.gz -C $(UNPACKED_DIR)
+
+	# overwrite unpacked regex library folder
+	cp -rf server/src-python/hanta_numpy_nltk/regex $(UNPACKED_DIR)
 
 	cp -rf server/data build/$(PLUGIN_NAME)/server/data
 	cp -rf server/src-python build/$(PLUGIN_NAME)/server/src-python
@@ -47,7 +45,8 @@ build-server:
 clean:
 	rm -rf build
 	rm -f server/src-node/bundle.js
-	rm -rf server/src-python/hanta_numpy_nltk
+	rm -f server/src-python/hanta_numpy_nltk/*.whl
+	rm -rf server/src-python/hanta_numpy_nltk/unpacked
 
 zip: build
 	cd build && zip ${ZIP_NAME} -r $(PLUGIN_NAME)/

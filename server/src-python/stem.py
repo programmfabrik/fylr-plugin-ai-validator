@@ -27,11 +27,13 @@ import numpy
 
 # NLTK Daten herunterladen, falls benötigt
 nltk.data.path.append(library_dir)
-try:
-    nltk.data.find('tokenizers/punkt')
-except LookupError:
-    sys.stderr.write("NLTK punkt tokenizer not found. Downloading...\n")
-    nltk.download('punkt', download_dir=library_dir)
+tokenizers = ['punkt', 'punkt_tab']
+for tokenizer in tokenizers:
+    try:
+        nltk.data.find(f'tokenizers/{tokenizer}')
+    except LookupError:
+        sys.stderr.write(f"NLTK {tokenizer} tokenizer not found. Downloading...\n")
+        nltk.download(tokenizer, download_dir=library_dir)
 
 # Tagger initialisieren
 tagger_de = ht.HanoverTagger('morphmodel_ger.pgz')

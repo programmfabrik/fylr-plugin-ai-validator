@@ -9,3 +9,6 @@ node_modules/
 .DS_Store
 .env
 server/src-node/bundle.js
+*.whl
+**/unpacked/
+*.pyc
